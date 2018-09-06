@@ -19,6 +19,7 @@
   "dependencies": {
     "bluebird": "^3.5.2",
     "elasticsearch": "^15.1.1",
+    "minimist": "^1.2.0",
     "moment": "^2.22.2"
   }
 }
