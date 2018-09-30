@@ -1,0 +1,76 @@
+name: ESmeralda - ElasticSearch Managmenet Environment for Real Advanced Lightweigt Descriptive Actions (ESmeralda)
+section: 1
+arguments:
+  - name: option ...
+  - name: BUG
+    optional: true
+    moreThanOnce: false
+
+description: |
+
+  -r, -remove APP-TYPE\t\t\t deletes expired indices
+  -o, -older\t\t\t\t default: 1 | sets the limit for valid indices in days
+
+options:
+  - short: h
+    long: help
+    description: |
+      Displays me :).
+
+  - short: H
+    long: hostname
+    argument: 'HOSTNAME'
+    description: |
+      Default is `127.0.0.1`.
+      Sets the ElasticSearch hostname.
+      Note: The complete ElasticSearch host can also be defined over the env argument `ES_URL`.
+
+  - short: p
+    long: port
+    argument: 'PORT'
+    description: |
+      Default is `9200`.
+      Sets the ElasticSearch port.
+      Note: The complete ElasticSearch host can also be defined over the env argument `ES_URL`.
+
+  - short: l
+    long: list
+    argument: 'FILTER'
+    description: |
+      Default is `*`.
+      Lists all aliases/indices matching the given filter.
+
+  - short: c
+    long: create
+    argument: 'NAME'
+    description: |
+      Creates an index with the given name following by a timestamp.
+
+  - short: a
+    long: activate
+    argument: 'NAME-TIMESTAMP'
+    description: |
+      Deletes (if exitsts) the alias `NAME` and assigns the alias `NAME` to the given index.
+
+  - short: s
+    long: swap
+    argument: 'NAME-TIMESTAMP'
+    description: |
+      Deletes (if exitsts) the alias `NAME-TIMESTAMP-write` and assigns the alias `NAME` to the given index.
+
+  - short: r
+    long: remove
+    argument: 'NAME'
+    description: |
+      Deletes expired indices matching the given name.
+
+  - short: o
+    long: older
+    argument: 'N'
+    description: |
+      Default is 1 day.
+      Sets the limit for valid indices in days.
+  - short: y
+    long: yes
+    description: |
+      Assume `Yes` to all questions.

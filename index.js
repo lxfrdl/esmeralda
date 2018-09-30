@@ -1,1 +1,1 @@
-module.export = require("./src/esmeralda");
+require("./dist/esmeralda.js");
