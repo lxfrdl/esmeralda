@@ -21,7 +21,10 @@ filterLastDays = ( result, older ) ->
   for own index, aliases of result
     indexTimestamp = patternTimestamp.exec(index)[0]
     diff = moment().diff moment(indexTimestamp,format), "days"
-    if  diff <= Number older
+    if typeof older == "string" && "none" == older.trim()
+      if aliases.length == 0
+        expired[index] = aliases
+    else if  diff <= Number older
       valid[index] = aliases
     else
       expired[index] = aliases

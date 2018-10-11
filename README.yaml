@@ -69,7 +69,7 @@ options:
     argument: 'N'
     description: |
       Default is 1 day.
-      Sets the limit for valid indices in days.
+      Sets the limit for valid indices in days. Set to 'none' to remove all unreferenced indices.
   - short: y
     long: yes
     description: |
