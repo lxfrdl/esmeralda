@@ -9,7 +9,7 @@
     "prepublishOnly": "npm run lint && npm run transpile-clean && npm run generate-manpage",
     "transpile-coffe-2-js": "coffee --compile --output dist src",
     "transpile-clean": "rm -rf dist && mkdir -p dist && npm run transpile-coffe-2-js",
-    "test-watch": "nodemon -w src/ -w spec/ -e .coffee -x npm run test",
+    "test-watch": "npm test -- --watch --watch-extensions coffee",
     "lint": "coffeelint -f coffeelint.json src/ spec/",
     "help": "coffee src/esmeralda.coffee --help | man -l -",
     "generate-manpage": "mkdir -p man && ./node_modules/.bin/coffee src/esmeralda.coffee --help > man/esmeralda.1"
@@ -43,7 +43,6 @@
     "chai-as-promised": "^7.1.1",
     "coffeelint": "^2.1.0",
     "coffeescript": "^2.3.2",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.4"
+    "mocha": "^5.2.0"
   }
 }
