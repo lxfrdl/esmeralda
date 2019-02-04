@@ -21,22 +21,25 @@
   moment = require("moment");
 
   filterLastDays = function(result, older) {
-    var aliases, diff, expired, index, indexTimestamp, valid;
+    var aliases, diff, expired, index, indexTimestamp, match, valid;
     valid = [];
     expired = [];
     for (index in result) {
       if (!hasProp.call(result, index)) continue;
       aliases = result[index];
-      indexTimestamp = patternTimestamp.exec(index)[0];
-      diff = moment().diff(moment(indexTimestamp, format), "days");
+      match = patternTimestamp.exec(index);
       if (aliases.length > 0) {
         valid[index] = aliases;
       } else if (typeof older === "string" && "none" === older.trim()) {
         expired[index] = aliases;
-      } else if (diff <= Number(older)) {
-        valid[index] = aliases;
-      } else {
-        expired[index] = aliases;
+      } else if (match) {
+        indexTimestamp = match[0];
+        diff = moment().diff(moment(indexTimestamp, format), "days");
+        if (diff <= Number(older)) {
+          valid[index] = aliases;
+        } else {
+          expired[index] = aliases;
+        }
       }
     }
     return {valid, expired};
