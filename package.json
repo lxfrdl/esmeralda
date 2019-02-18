@@ -12,7 +12,8 @@
     "test-watch": "npm test -- --watch --watch-extensions coffee",
     "lint": "coffeelint -f coffeelint.json src/ spec/",
     "help": "coffee src/esmeralda.coffee --help | man -l -",
-    "generate-manpage": "mkdir -p man && ./node_modules/.bin/coffee src/esmeralda.coffee --help > man/esmeralda.1"
+    "generate-manpage": "mkdir -p man && ./node_modules/.bin/coffee src/esmeralda.coffee --help > man/esmeralda.1",
+    "preversion": "npm test"
   },
   "bin": {
     "esmeralda": "index.js"
