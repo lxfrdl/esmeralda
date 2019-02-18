@@ -13,7 +13,8 @@
     "lint": "coffeelint -f coffeelint.json src/ spec/",
     "help": "coffee src/esmeralda.coffee --help | man -l -",
     "generate-manpage": "mkdir -p man && ./node_modules/.bin/coffee src/esmeralda.coffee --help > man/esmeralda.1",
-    "preversion": "npm test"
+    "preversion": "npm test",
+    "postversion": "git push"
   },
   "bin": {
     "esmeralda": "index.js"
