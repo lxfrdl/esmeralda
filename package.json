@@ -6,7 +6,7 @@
   "scripts": {
     "start": "coffee src/esmeralda.coffee",
     "test": "mocha --require coffeescript/register --require spec/helper.coffee spec/**/*.coffee --exit",
-    "prepublishOnly": "npm run lint && npm run transpile-clean && npm run generate-manpage",
+    "prepublish": "npm run lint && npm run transpile-clean && npm run generate-manpage",
     "transpile-coffe-2-js": "coffee --compile --output dist src",
     "transpile-clean": "rm -rf dist && mkdir -p dist && npm run transpile-coffe-2-js",
     "test-watch": "npm test -- --watch --watch-extensions coffee",
