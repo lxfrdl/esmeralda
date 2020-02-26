@@ -2,7 +2,7 @@
 fs = require "fs"
 path = require "path"
 Promise = require 'bluebird'
-
+require 'coffeescript/register'
 elasticsearch = require("elasticsearch")
 moment = require("moment")
 
