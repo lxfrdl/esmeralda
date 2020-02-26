@@ -22,6 +22,7 @@ argv = minimist process.argv.slice(2), automist.options()
   hostname
   port
   older
+  overrides
 } = argv
 # cause yes is reserved in cs
 assumeYes = argv.yes
@@ -36,6 +37,13 @@ client = new elasticsearch.Client {
   #, log: "trace"
 }
 
+actions = require("./esActions") client
+
+if overrides?
+  overriddenActions = require(path.resolve overrides) client
+  for key,value of overriddenActions
+    actions[key] = value
+
 {
   deleteAlias
   createAlias
@@ -45,7 +53,7 @@ client = new elasticsearch.Client {
   getAlias
   existsAlias
   deleteIndices
-} = require("./esActions") client
+} = actions
 
 {
   printIndicesWithAliases

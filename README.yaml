@@ -70,7 +70,29 @@ options:
     description: |
       Default is 1 day.
       Sets the limit for valid indices in days. Set to 'none' to remove all unreferenced indices.
+
   - short: y
     long: yes
     description: |
       Assume `Yes` to all questions.
+
+  - short: O
+    long: overrides
+    argument: 'PATH'
+    description: |
+      Define overrides for elasticsearch actions.
+      Esmeralda will try to load the module at `PATH` using `require`. The module should export a factory function. 
+      Esmeralda will call that function, passing the ES client as the only argument.
+      The factory function should return an object that contains any of the following methods:
+
+        - deleteAlias(aliasName)
+        - createAlias(aliasName, indexName)
+        - deleteAliasIfExists(aliasName)
+        - findIndices(indexName)
+        - createIndex(indexName)
+        - getAlias(aliasName)
+        - existsAlias(aliasName)
+        - deleteIndices(indexLookup)
+
+      For details, please look into the source code.
+
